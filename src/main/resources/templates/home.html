@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Home page</title>
@@ -12,16 +12,30 @@
 	<section>
 
 		<div class="container">
-			<div class="row pt-5">
-				<div class="col text-center">
-
-					<h1>Pagina di test per deploy in openshift</h1>
-					<p>
-						Upload del progetto tramite <strong>S2I</strong>
-					</p>
-					<p> Prova Webhook </p>
-				</div>
+			<div class="pb-2 mt-4 mb-2">
+				<h2>
+					Pagina gestione contatti OpenShift<small> - Lista record</small>
+				</h2>
 			</div>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Cognome</th>
+						<th>Username</th>
+					</tr>
+				</thead>
+
+				<tbody th:each="$c of $lista">
+					<tr>
+						<td th:text="$c.nome"></td>
+						<td th:text="$c.cognome"></td>
+						<td th:text="$c.username"></td>
+					</tr>
+				</tbody>
+			</table>
+
 		</div>
 
 	</section>

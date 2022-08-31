@@ -2,21 +2,27 @@ package com.gio.openshift.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "contatto")
 public class Contatto implements Serializable {
 	private static final long serialVersionUID = -3234040192006889400L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	@Column(nullable = true)
 	private String nome;
+	@Column(nullable = false)
 	private String cognome;
+	@Column(nullable = false, unique = true)
 	private String username;
-
-	public Contatto() {
-	}
-
-	public Contatto(String nome, String cognome, String username) {
-		this.nome = nome;
-		this.cognome = cognome;
-		this.username = username;
-	}
 
 	public String getNome() {
 		return nome;
